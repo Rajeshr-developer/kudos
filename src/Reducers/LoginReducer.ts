@@ -1,14 +1,14 @@
 const initialState = {
     userName: 'Rajesh Ramaiah',
-    loginCompleted: false
+    loginCompleted: false,
+    logout:false
 }
 
 export const LoginReducer = (state = initialState, action: any) => {
-    console.log('LoginReducer = ',action.type);
     switch (action.type) {
         case "LOGIN_ERROR":
-            console.log('loginerror');
-            return { ...state, loginCompleted: false }
+        case "LOGIN_OUT":
+            return { ...state, loginCompleted: false, logout: true }
         case "LOGIN_SUCCESS":
             return { ...state, loginCompleted: true }
         default:

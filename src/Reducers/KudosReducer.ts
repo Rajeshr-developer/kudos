@@ -1,9 +1,12 @@
+import { asyncReducer } from '../Middleware/index';
+
 const initialState = {
-    kudosData: []
+    kudosData: [],
+    tweetRemoved: false,
+    tweetUpdated: false,
 }
 
 export const KudosReducer = (state = initialState, action: any) => {
-    console.log(state,action);
     switch (action.type) {
         case "ADD_JSON_DATA":
             return {
@@ -14,17 +17,24 @@ export const KudosReducer = (state = initialState, action: any) => {
         case "REMOVE_JSON_DATA":
             return {
                 ...state,
-                kudosData: [...state.kudosData, action.payload]
+                tweetRemoved: true
+            }
+            break;
+        case "UPDATE_JSON_DATA":
+            return {
+                ...state,
+                tweetUpdated: true
             }
             break;
         case "JSON_DATA":
             return {
                 ...state,
-                kudosData: action.payload
+                kudosData: action.payload,
+                tweetUpdated: false,
+                tweetRemoved: false,
             }
             break;
         default:
-            console.log('default..!');
             return {
                 ...state,
                 kudosData: state.kudosData

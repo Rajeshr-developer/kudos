@@ -68,8 +68,12 @@ class LoginPage extends Component<Props, State> {
         }
     }
 
+    shouldComponentUpdate(nextProps: any, nextState: any) {
+        return true;
+    }
+
     componentDidMount() {
-        console.log(' [ LoginPage - componentDidMount] ', this.props);
+
     }
 
     onchangetext = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +89,7 @@ class LoginPage extends Component<Props, State> {
     }
 
     onsubmit = (e: React.MouseEvent<HTMLFormElement>) => {
-        this.props.dispatch(asyncReducer(undefined, "GET", "LOGIN", (this.state.uName+'~'+this.state.pass)));
+        this.props.dispatch(asyncReducer(undefined, "GET", "LOGIN", (this.state.uName + '~' + this.state.pass)));
         e.preventDefault();
     }
 
